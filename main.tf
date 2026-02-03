@@ -35,8 +35,9 @@ data "http" "manifestfile" {
   url = "https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.0/experimental-install.yaml"
 }
 
-resource "kubectl_manifest" "kubernetes_gateway_API_crd" {
-  yaml_body = data.manifestfile.body
+
+resource "kubernetes_manifest" "kubernetes_gateway_API_crd" {
+  manifest = data.manifestfile.body
 }
 
 
